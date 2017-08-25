@@ -12,7 +12,11 @@ def login():
     name = request.form['name']
     password = request.form['password']
     target_user = User.query.filter(User.name == name).first()
-    if target_user.password == password:
+    if target_user == None:
+        return render_template('index.html', message="Your account not found")
+
+    elif target_user.password == password:
         session['id', 'name'] = [target_user.id, name]
         return redirect('/top')
-
+    else:
+        redirect('/')
