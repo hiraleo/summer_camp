@@ -20,3 +20,7 @@ def login():
         return redirect('/top')
     else:
         redirect('/')
+
+@app.route('/register', methods=['GET'])
+def regist_page():
+    return render_template('register.html')
