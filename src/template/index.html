@@ -1,1 +1,19 @@
-<h1>Hello, world</h1>
+{% extends "layout.html" %}
+{% block body %}
+<form method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" />
+    </div>
+    <div>
+        <label for="password">password:</label>
+        <input type="password" id="password" />
+    </div>
+
+    <div class="button">
+		<button type ="submit" value="新規登録">
+		</button>
+	</div>
+</form>
+
+{% endblock %}
