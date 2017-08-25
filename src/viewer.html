@@ -1,4 +1,4 @@
-<!-- HyperLapse_master File-->
+<!-- exampleにあったコード -->
 
 <!DOCTYPE html>
 <html>
@@ -13,9 +13,7 @@
 	<script src="js/Hyperlapse.js"></script>
 	<script>
 
-		// 出発地点
 		var start_point = new google.maps.LatLng(44.3431,6.783936);
-		// 到着地点
 		var end_point = new google.maps.LatLng(44.340578,6.782684);
 		var lookat_point = new google.maps.LatLng(44.34232747290594, 6.786460550292986);
 		var map, directions_renderer, directions_service, streetview_service, geocoder;
@@ -236,7 +234,7 @@
 
 			/* Dat GUI */
 
-			//var gui = new dat.GUI();
+			var gui = new dat.GUI();
 
 			var o = {
 				distance_between_points:10,
