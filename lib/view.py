@@ -1,6 +1,16 @@
-from flask import request, redirect, url_for, render_template, flash, session
+from functools import wraps
+from flask import request, redirect, url_for, render_template, flash, abort, jsonify, session, g
 from lib import app, db
 from lib.models import User
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_view(*args, **kwargs):
+        if g.user is None:
+            return redirect(url_for('login', next=request.path))
+        return f(*args, **kwargs)
+    return decorated_view
 
 
 @app.route('/')
@@ -9,6 +19,7 @@ def index():
 
 @app.route('/', methods=['POST'])
 def login():
+    print(request.form)
     name = request.form['name']
     password = request.form['password']
     target_user = User.query.filter(User.name == name).first()
@@ -39,3 +50,10 @@ def regist_user():
     db.session.add(user)
     db.session.commit()
     return index()
+
+@app.route('/top', methods=['GET'])
+def top():
+    return render_template('top.html')
+
+
+
