@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/SummerCamp0825/summer_camp#readme",
   "devDependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "requirejs": "^2.3.5"
   }
 }
