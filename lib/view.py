@@ -4,5 +4,14 @@ from lib.models import User
 
 
 @app.route('/')
-def show_login():
+def index():
     return render_template('index.html')
+
+@app.route('/', methods=['POST'])
+def login():
+    name = request.form['name']
+    password = request.form['password']
+    target_user = User.query.filter(User.name == name).first()
+    if target_user.password == password:
+        return redirect('/top')
+
