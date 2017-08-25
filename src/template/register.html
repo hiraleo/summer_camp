@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+<form method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" />
+    </div>
+    <div>
+        <label for="password">password:</label>
+        <input type="password" id="password" />
+    </div>
+
+    <div>
+        <label for="password">再入力:</label>
+        <input type="password" name="passwd_confirmation">
+
+    </div>
+
+	<input type ="submit" value="登録">
+		
+</form>
+
+{% endblock %}
