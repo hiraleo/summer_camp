@@ -4,9 +4,10 @@ from flask.ext.session import Session
 
 app = Flask(__name__, template_folder='../src/template')
 app.config.from_object('lib.config')
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 db = SQLAlchemy(app)
-SESSION_TYPE = 'redis'
+app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
 import lib.view

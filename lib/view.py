@@ -24,3 +24,18 @@ def login():
 @app.route('/register', methods=['GET'])
 def regist_page():
     return render_template('register.html')
+
+@app.route('/register', methods=['POST'])
+def regist_user():
+    name = request.form['name']
+    if User.query.filter(User.name == name).first():
+        return render_template('register.thml', message='username already exist')
+    if request.form['password'] == request.form['passwd_confirmation']:
+        password = request.form['password']
+    user = User(
+        name=name,
+        password=password
+    )
+    db.session.add(user)
+    db.session.commit()
+    return index()
