@@ -42,17 +42,17 @@
         <div id="signup-form">
         <h2>新規登録</h2>
         <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name"/>
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder="User Name"/>
         </div>
         <div>
-            <label for="password">password:</label>
-            <input type="password" id="password" name="password"/>
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="password"/>
         </div>
 
         <div>
-            <label for="password">再入力:</label>
-            <input type="password" name="passwd_confirmation" name="passwd_confirmation">
+            <label for="password"></label>
+            <input type="password" name="passwd_confirmation" name="passwd_confirmation" placeholder="再入力">
 
         </div>
 
@@ -77,15 +77,15 @@
 
     <form action="{{ url_for('login') }}" method=post>
         <div >
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name"/>
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder="User Name"/>
         </div>
         <div>
-            <label for="password">password:</label>
-            <input type="password" id="password" name="password" />
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="password"/>
         </div>
 
-        <input class="btn " id="submit-btn" type ="submit" value="ログイン">
+        <input class="btn " id="submit-btn" type ="submit" value="ログイン" >
 
     </form>
 </div>
