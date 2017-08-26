@@ -181,6 +181,7 @@ header {
 
 .project-btn {
     display: inline-block;
+    font-size: 16px;
     padding: 14px 40px;
     background-color: #125688;
     border: none;
@@ -189,6 +190,8 @@ header {
     margin: 10px auto;
     cursor: pointer;
     margin-top: 40px;
+    margin-left: 40px;
+
 }
 
 
@@ -291,7 +294,7 @@ table th {
 	width: 10px;
 	padding: 10px;
 	font-weight: bold;
-	vertical-align: top;
+	vertical-align: center;
 	color: #153d73;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -302,6 +305,7 @@ table td {
 	width: 120px;
 	padding: 10px;
 	vertical-align: center;
+    text-align: center;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 }
@@ -326,10 +330,24 @@ footer {
 }
 
 .top-container h3 {
-    color: #125688;
     font-size: 32px;
+    margin-bottom: 10px;
 }
 
 .top-container h4 {
     color: red;
+}
+
+.pick-color {
+    color: #FF00BC;
+    margin-top: 0;
+}
+
+.normal-color {
+    color: #125688;
+}
+
+.popular-container {
+    float: left;
+    margin-right: 120px;
 }

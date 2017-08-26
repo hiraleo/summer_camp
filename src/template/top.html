@@ -4,7 +4,8 @@
 
 
 <div class="top-container">
-<h3 class="popular">popular</h3>
+<div class="popular-container">
+<h3 class="pick-color">popular</h3>
 {% if popular %}
 <table class="tabel">
     <thead>
@@ -47,9 +48,11 @@
 {% else %}
 <h4>No project are available</h4>
 {% endif %}
+</div>
 
 
-<h3>latest</h3>
+<div class="latest-container">
+<h3 class="normal-color">latest</h3>
 {% if latest %}
 <table >
     <thead>
@@ -90,10 +93,14 @@
 {% else %}
 <h4>No project are available</h4>
 {% endif %}
+</div>
+</div>
 
 <button class="project-btn" onclick="redirectCreatePage()">プロジェクトを作る</button>
 
 </div>
+</div>
+
 <script>
     function redirectCreatePage() {
         window.open('{{url_for("create_project")}}')

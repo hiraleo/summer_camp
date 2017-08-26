@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<div class="top-container">
 <h3>{{user_name}}</h3>
 {% if context %}
-<table>
+<table class="tabel">
     <thead>
     <tr>
         <th>creator</th>
@@ -22,9 +23,14 @@
             </a>
         </td>
         <td>{{project.fav}}
-        <td>
-            <input type="button"
-                   class="favorite" value="favorite" data="{{project.id}}">
+        <td class="favorite-class">
+            <!-- <input type="button"
+                   class="favorite" value="favorite" data="{{project.id}}"> -->
+
+           <div class="fav-td">
+               <div class="favorite">
+               <input class="fav-btn" type="button" value="favorite" data="{{project.id}}" >
+           </div>
         </td>
     </tr>
     {% endfor %}
@@ -35,6 +41,9 @@
 
 
 {% endif %}
+
+
+
 
 <script>
 
@@ -58,5 +67,7 @@
 
 </script>
 
-<a href="{{url_for('top')}}">topに戻る</a>
+<a class="project-btn" href="{{url_for('top')}}">topに戻る</a>
 {% endblock %}
+
+</div>
