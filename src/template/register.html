@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<div class="signup-modal-wrapper" id="signup-modal">
+<script type="text/javascript" src="/src/js/script.js"></script>
+
+<!-- <div class="signup-modal-wrapper" id="signup-modal">
   <div class="modal">
     <div class="close-modal">
       <i class="fa fa-2x fa-times"></i>
@@ -16,32 +18,36 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="signup-modal-wrapper" id="signup-modal">
   <div class="modal">
-<form method="post">
-    <div id="signup-form">
-    <h2>新規登録</h2>
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"/>
-    </div>
-    <div>
-        <label for="password">password:</label>
-        <input type="password" id="password" name="password"/>
-    </div>
+      <div class="close-modal">
+        <i class="fa fa-2x fa-times"></i>
+      </div>
+<div class="signup-form">
+    <form method="post">
+        <div id="signup-form">
+        <h2>新規登録</h2>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"/>
+        </div>
+        <div>
+            <label for="password">password:</label>
+            <input type="password" id="password" name="password"/>
+        </div>
 
-    <div>
-        <label for="password">再入力:</label>
-        <input type="password" name="passwd_confirmation" name="passwd_confirmation">
+        <div>
+            <label for="password">再入力:</label>
+            <input type="password" name="passwd_confirmation" name="passwd_confirmation">
 
+        </div>
+
+    	<input id="submit-btn" type ="submit" value="登録">
+        </div>
+    </form>
     </div>
-
-	<input type ="submit" value="登録">
     </div>
-</form>
-
-</div>
 </div>
 {% endblock %}
