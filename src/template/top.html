@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<form action="{{url_for('keyword')}}" method="get">
+  <input type="search" name="search" placeholder="keyword">
+  <input type="submit" name="submit" value="検索">
+</form>
+
 <h3>popular</h3>
 {% if popular %}
 <table>
@@ -8,6 +13,7 @@
     <tr>
         <th>creator</th>
         <th>title</th>
+        <th>favorite</th>
     </tr>
     </thead>
     <tbody>
@@ -20,6 +26,9 @@
         </td>
         <td>
             {{ project.name }}
+        </td>
+        <td>
+            {{ project.fav }}
         </td>
     </tr>
     {% endfor %}
@@ -35,11 +44,11 @@
 <table>
     <thead>
     <tr>
-        <th>
-            creator
-        </th>
+        <th>creator</th>
         <th>title</th>
+        <th>favorite</th>
     </tr>
+
     </thead>
     <tbody>
     {% for project in latest %}
@@ -51,6 +60,9 @@
         </td>
         <td>
             {{ project.name }}
+        </td>
+        <td>
+            {{ project.fav }}
         </td>
     </tr>
     {% endfor %}

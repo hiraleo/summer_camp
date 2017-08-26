@@ -74,4 +74,14 @@ def logout():
 @login_required
 def user_detail(user_name):
     user_project = HyperLapse.query.filter(HyperLapse.creator == user_name)
-    return render_template('user.html', context=user_project)
+    return render_template('user.html', context = user_project)
+
+
+@app.route('/search')
+@login_required
+def keyword():
+    keyword = '%{keyword}%'.format(keyword=request.args.get('keyword'))
+    print(keyword)
+    user_project = HyperLapse.query.filter(HyperLapse.name.like(keyword)).all()
+    print(user_project)
+    return render_template('result.html', context = user_project)
