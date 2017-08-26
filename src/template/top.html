@@ -1,14 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<form action="{{url_for('keyword')}}" method="get">
-      <input type="search" name="search" placeholder="keyword">
-      <input type="submit" name="submit" value="検索">
-</form>
 
-<h3>popular</h3>
+
+<div class="top-container">
+<h3 class="popular">popular</h3>
 {% if popular %}
-<table>
+<table class="tabel">
     <thead>
     <tr>
         <th>creator</th>
@@ -33,9 +31,14 @@
         <td>
             {{ project.fav }}
         </td>
-        <td>
-            <input type="button"
-                   class="favorite" value="favorite" data="{{project.id}}" >
+        <td class="favorite-class">
+            <!-- <input type="button"
+                   class="favorite" value="favorite" data="{{project.id}}" > -->
+
+           <div class="fav-td">
+               <div class="favorite">
+               <input class="fav-btn" type="button" value="favorite" data="{{project.id}}" >
+           </div>
         </td>
     </tr>
     {% endfor %}
@@ -48,7 +51,7 @@
 
 <h3>latest</h3>
 {% if latest %}
-<table>
+<table >
     <thead>
     <tr>
         <th>creator</th>
@@ -75,7 +78,10 @@
             {{ project.fav }}
         </td>
         <td>
-            <input class="favorite" type="button" value="favorite" data="{{project.id}}">
+            <div class="fav-td">
+                <div class="favorite">
+                <input class="fav-btn" type="button" value="favorite" data="{{project.id}}" >
+            </div>
         </td>
     </tr>
     {% endfor %}
@@ -84,9 +90,10 @@
 {% else %}
 <h4>No project are available</h4>
 {% endif %}
-<button onclick="redirectCreatePage()">プロジェクトを作る</button>
 
+<button class="project-btn" onclick="redirectCreatePage()">プロジェクトを作る</button>
 
+</div>
 <script>
     function redirectCreatePage() {
         window.open('{{url_for("create_project")}}')
@@ -111,6 +118,8 @@
     });
 
 </script>
+
+
 {% endblock %}
 
 target.
