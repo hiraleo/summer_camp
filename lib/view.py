@@ -80,7 +80,7 @@ def user_detail(user_name):
 @app.route('/search')
 @login_required
 def keyword():
-    keyword = '%{keyword}%'.format(keyword=request.args.get('keyword'))
+    keyword = '%{keyword}%'.format(keyword=request.args.get('search'))
     print(keyword)
     user_project = HyperLapse.query.filter(HyperLapse.name.like(keyword)).all()
     print(user_project)
