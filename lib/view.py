@@ -74,4 +74,9 @@ def logout():
 @login_required
 def user_detail(user_name):
     user_project = HyperLapse.query.filter(HyperLapse.creator == user_name)
-    return render_template('user.html', context=user_project)
+    return render_template('user.html', context=user_project, user_name=user_name)
+
+@app.route('/project')
+@login_required
+def create_project():
+    return render_template('viewer.html')

@@ -59,5 +59,12 @@
 {% else %}
 <h4>No project are available</h4>
 {% endif %}
+<button onclick="redirectCreatePage()">プロジェクトを作る</button>
 
+
+<script>
+    function redirectCreatePage(){
+        window.open('{{url_for("create_project")}}')
+    }
+</script>
 {% endblock %}
