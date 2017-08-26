@@ -99,7 +99,9 @@ def keyword():
 @app.route('/project')
 @login_required
 def create_project():
-    return render_template('viewer.html')
+    default_project = HyperLapse.query.filter(HyperLapse.id == 4).all()[0]
+    print(default_project)
+    return render_template('viewer.html', project=default_project)
 
 
 @app.route('/project/save', methods=['POST'])
@@ -113,14 +115,26 @@ def save_project():
         start_latlng2=json['startPoint2'],
         end_latlng1=json['endPoint1'],
         end_latlng2=json['endPoint2'],
+        viewpoint_latlng1=json['lookatPoint1'],
+        viewpoint_latlng2=json['lookatPoint2'],
         creator=session.get('user')
     )
     db.session.add(hyperlapse)
     db.session.commit()
     result = {
         'Result': {
-            'test': "success"
+            'text': "success"
         }
     }
     return jsonify(ResultSet=result)
+
+@app.route('/project/<project_id>')
+@login_required
+def render_project(project_id):
+    target_project = HyperLapse.query.filter(id == project_id).all()
+    if(len(target_project) == 0):
+        flash('project not found')
+        return redirect(url_for('top'))
+    else:
+        return render_template('viewer.html', project=target_project)
 
