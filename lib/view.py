@@ -85,3 +85,14 @@ def keyword():
     user_project = HyperLapse.query.filter(HyperLapse.name.like(keyword)).all()
     print(user_project)
     return render_template('result.html', context = user_project)
+
+@app.route('/project')
+@login_required
+def create_project():
+    return render_template('viewer.html')
+
+@app.route('/project/save', methods=['POST'])
+@login_required
+def save_project():
+    json = request.json
+
