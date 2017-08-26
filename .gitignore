@@ -5,3 +5,4 @@
 /flask_session/
 lib/summerCamp.db
 *.db
+*.pyc
