@@ -144,10 +144,7 @@ def favorite():
 @app.route('/project/<project_id>')
 @login_required
 def render_project(project_id):
-    target_project = HyperLapse.query.filter(id == project_id).all()
-    if(len(target_project) == 0):
-        flash('project not found')
-        return redirect(url_for('top'))
-    else:
-        return render_template('viewer.html', project=target_project)
+    target_project = HyperLapse.query.filter(HyperLapse.id == project_id).all()[0]
+    print(target_project)
+    return render_template('viewer.html', project=target_project)
 

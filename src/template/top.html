@@ -21,19 +21,21 @@
     {% for project in popular %}
     <tr>
         <td>
-            <a href="{{url_for('user_detail', user_name=project.creator)}}">
+            <a href="{{url_for('user_detail', user_name=project.creator)}}" >
                 {{ project.creator }}
             </a>
         </td>
         <td>
+            <a href="{{url_for('render_project', project_id=project.id)}}" target="_blank">
             {{ project.name }}
+            </a>
         </td>
         <td>
             {{ project.fav }}
         </td>
         <td>
             <input type="button"
-                   class="favorite" value="favorite" data="{{project.id}}">
+                   class="favorite" value="favorite" data="{{project.id}}" >
         </td>
     </tr>
     {% endfor %}
@@ -65,7 +67,7 @@
             </a>
         </td>
         <td>
-            <a href="{{url_for('render_project', project_id=project.id)}}">
+            <a href="{{url_for('render_project', project_id=project.id)}}" target="_blank">
             {{ project.name }}
             </a>
         </td>
