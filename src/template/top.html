@@ -1,4 +1,57 @@
 {% extends "layout.html" %}
 {% block body %}
-this is top page
+
+<h3>popular</h3>
+{% if context.popular.id %}
+<table>
+    <thead>
+    <tr>
+        <th>creator</th>
+        <th>title</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for project in context.popular %}
+    <tr>
+        <td>project.creator</td>
+        <td>project.name</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h4>No project are available</h4>
+{% endif %}
+
+
+<h3>latest</h3>
+{% if context['latest'].id %}
+<table>
+    <thead>
+    <tr>
+        <th>
+            <a href="{{usrl_for(user_detail)}}">
+                creator
+            </a>
+        </th>
+        <th>title</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for project in context['latest'] %}
+    <tr>
+        <td>
+            <a href="{{usrl_for(user_detail)}}">
+                project.creator
+            </a>
+        </td>
+        <td>project.name</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h4>No project are available</h4>
+{% endif %}
+
 {% endblock %}

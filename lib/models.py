@@ -8,7 +8,7 @@ class User (db.Model):
 
     def __repr__(self):
         return '<User id={id} name={name!r}>'.format(
-            id=self.id, name=self.namme)
+            id=self.id, name=self.name)
 
 
 
@@ -23,9 +23,12 @@ class HyperLapse (db.Model):
     viewpoint_latlng1 = db.Column(db.Float)
     viewpoint_latlng2 = db.Column(db.Float)
     creator = db.Column(db.ForeignKey('user.id', onupdate='CASCADE', ondelete='CASCADE'))
+    fav = db.Column(db.Integer)
+    created_at = db.Column(db.DateTime,  default=db.func.now())
 
     def __repr__(self):
-        return '<HyperLeapse id={id} name={}>'
+        return '<HyperLapse id={id} name={name}>'.format(
+            id=self.id, name=self.name)
 
 def init():
     db.create_all()
