@@ -60,8 +60,8 @@ def top():
     late_project = HyperLapse.query.order_by(HyperLapse.created_at.desc())[:5]
     popular_project = HyperLapse.query.order_by(HyperLapse.fav.desc())[:5]
     context = {'latest': late_project, 'popular': popular_project}
-    print(context)
-    return render_template('top.html', context=context)
+    print(context['latest'])
+    return render_template('top.html', latest=late_project, popular=popular_project)
 
 @app.route('/logout')
 @login_required

@@ -2,7 +2,7 @@
 {% block body %}
 
 <h3>popular</h3>
-{% if context.popular.id %}
+{% if popular %}
 <table>
     <thead>
     <tr>
@@ -11,10 +11,16 @@
     </tr>
     </thead>
     <tbody>
-    {% for project in context.popular %}
+    {% for project in popular %}
     <tr>
-        <td>project.creator</td>
-        <td>project.name</td>
+        <td>
+            <a href="{{url_for('user_detail', user_id=project.creator)}}">
+            {{ project.creator.user.name }}
+            </a>
+        </td>
+        <td>
+            {{ project.name }}
+        </td>
     </tr>
     {% endfor %}
     </tbody>
@@ -25,27 +31,27 @@
 
 
 <h3>latest</h3>
-{% if context['latest'].id %}
+{% if latest %}
 <table>
     <thead>
     <tr>
         <th>
-            <a href="{{usrl_for(user_detail)}}">
-                creator
-            </a>
+            creator
         </th>
         <th>title</th>
     </tr>
     </thead>
     <tbody>
-    {% for project in context['latest'] %}
+    {% for project in latest %}
     <tr>
         <td>
-            <a href="{{usrl_for(user_detail)}}">
-                project.creator
+            <a href="{{url_for('user_detail', user_id=project.creator)}}">
+                {{ project.creator.user.name }}
             </a>
         </td>
-        <td>project.name</td>
+        <td>
+            {{ project.name }}
+        </td>
     </tr>
     {% endfor %}
     </tbody>
