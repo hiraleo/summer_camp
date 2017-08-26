@@ -17,10 +17,14 @@
     <tr>
         <td>
             <a href="{{url_for('user_detail', user_name=project.creator)}}">
-             {{project.creator}}
+                {{project.creator}}
             </a>
         </td>
-        <td>{{project.name}}</td>
+        <td>
+            <a href="{{url_for('render_project', project_id=project.id)}}" target="_blank">
+                {{project.name}}
+            </a>
+        </td>
         <td>{{project.fav}}</td>
     </tr>
     {% endfor %}
