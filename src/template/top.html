@@ -14,6 +14,7 @@
         <th>creator</th>
         <th>title</th>
         <th>favorite</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -29,6 +30,10 @@
         </td>
         <td>
             {{ project.fav }}
+        </td>
+        <td>
+            <input type="button" 
+            name="favorite" value="favorite" onClick +={{ project.fav }}>
         </td>
     </tr>
     {% endfor %}
@@ -47,6 +52,7 @@
         <th>creator</th>
         <th>title</th>
         <th>favorite</th>
+        <th></th>
     </tr>
 
     </thead>
@@ -64,6 +70,9 @@
         <td>
             {{ project.fav }}
         </td>
+        <td>
+            <input type="button" value="favorite" onclick= +={{ project.fav}}>
+        </td>
     </tr>
     {% endfor %}
     </tbody>
@@ -78,5 +87,24 @@
     function redirectCreatePage(){
         window.open('{{url_for("create_project")}}')
     }
+
+    $('#favorite').onClick() => {
+        const $form = $(this);
+        const param = {
+            e2: parts[3],
+            name: $('#favorite').val()
+        }
+        $.ajax({
+            type: 'POST',
+            url: '{{url_for("favorite")}}',
+            data:JSON.stringify(param),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: (r) => {
+                debugger;
+                alert(r.ResultSet.Result.text);
+
 </script>
 {% endblock %}
+
+target.

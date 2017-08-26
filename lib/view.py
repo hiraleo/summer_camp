@@ -124,3 +124,10 @@ def save_project():
     }
     return jsonify(ResultSet=result)
 
+
+@app.route('/favorite')
+@login_required
+def favb():
+    fav +=request.json['fav'] 
+    
+

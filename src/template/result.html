@@ -15,7 +15,11 @@
     <tbody>
     {% for project in context %}
     <tr>
-        <td>{{project.creator}}</td>
+        <td>
+            <a href="{{url_for('user_detail', user_name=project.creator)}}">
+             {{project.creator}}
+            </a>
+        </td>
         <td>{{project.name}}</td>
         <td>{{project.fav}}</td>
     </tr>
@@ -25,6 +29,6 @@
 {% else %}
 <h4>No project are available</h4>
 
-<a href="{{url_for('top')}}">topに戻る</a>
 {% endif %}
+<a href="{{url_for('top')}}">topに戻る</a>
 {% endblock %}
