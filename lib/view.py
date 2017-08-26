@@ -80,3 +80,9 @@ def user_detail(user_name):
 @login_required
 def create_project():
     return render_template('viewer.html')
+
+@app.route('/project/save', methods=['POST'])
+@login_required
+def save_project():
+    json = request.json
+
