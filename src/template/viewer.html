@@ -434,7 +434,7 @@
     </div>
     <div id="save" style="width: 400px; height: 300px; float: left; padding: 0;">
         <form id="save-form">
-            <input type="text" name="title">
+            <input id='save-title' type="text" name="title">
             <input type="submit" value="save">
         </form>
     </div>
@@ -446,20 +446,25 @@
 <script>
     $('#save-form').submit((event) => {
         event.preventDefault();
+        const $form = $(this);
         const parts = window.location.hash.substr(1).split(',');
+
         const param = {
             startPoint1: parts[0],
-            starPoint2: parts[1],
+            startPoint2: parts[1],
             endPoint1: parts[2],
             endPoint2: parts[3],
-            name: $form.serialize()
+            name: $('#save-title').val()
         }
         $.ajax({
             type: 'POST',
             url: '{{url_for("save_project")}}',
-            data: param,
-            success: () => {
-                alert('Project saved');
+            data:JSON.stringify(param),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: (r) => {
+                debugger;
+                alert(r.ResultSet.Result.text);
             },
         });
     });

@@ -10,15 +10,19 @@ def login_required(f):
         if g.user is None:
             return redirect(url_for('login', next=request.url))
         return f(*args, **kwargs)
+
     return decorated_function
+
 
 @app.before_request
 def before_request():
     g.user = session.get('id')
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/', methods=['POST'])
 def login():
@@ -35,9 +39,11 @@ def login():
     else:
         redirect('/')
 
+
 @app.route('/register', methods=['GET'])
 def regist_page():
     return render_template('register.html')
+
 
 @app.route('/register', methods=['POST'])
 def regist_user():
@@ -54,6 +60,7 @@ def regist_user():
     db.session.commit()
     return index()
 
+
 @app.route('/top', methods=['GET'])
 @login_required
 def top():
@@ -63,6 +70,7 @@ def top():
     print(context['latest'])
     return render_template('top.html', latest=late_project, popular=popular_project)
 
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -70,26 +78,29 @@ def logout():
     session.pop('name', None)
     return redirect(url_for('index'))
 
+
 @app.route('/user/<user_name>')
 @login_required
 def user_detail(user_name):
     user_project = HyperLapse.query.filter(HyperLapse.creator == user_name)
-    return render_template('user.html', context = user_project)
+    return render_template('user.html', context=user_project)
 
 
 @app.route('/search')
 @login_required
 def keyword():
-    keyword = '%{keyword}%'.format(keyword=request.args.get('keyword'))
+    keyword = '%{keyword}%'.format(keyword=request.args.get('search'))
     print(keyword)
     user_project = HyperLapse.query.filter(HyperLapse.name.like(keyword)).all()
     print(user_project)
-    return render_template('result.html', context = user_project)
+    return render_template('result.html', context=user_project)
+
 
 @app.route('/project')
 @login_required
 def create_project():
     return render_template('viewer.html')
+
 
 @app.route('/project/save', methods=['POST'])
 @login_required
@@ -97,18 +108,19 @@ def save_project():
     json = request.json
     print(json)
     hyperlapse = HyperLapse(
-        name=json.name,
-        start_latlng1=json.startPoint1,
-        start_latlng2=json.startPoint2,
-        end_latlng1=json.endPoint1,
-        end_latlng2=json.endPoint2,
-        creator=session.name
+        name=json['name'],
+        start_latlng1=json['startPoint1'],
+        start_latlng2=json['startPoint2'],
+        end_latlng1=json['endPoint1'],
+        end_latlng2=json['endPoint2'],
+        creator=session.get('user')
     )
     db.session.add(hyperlapse)
     db.session.commit()
     result = {
-        'Result':{
-            'result': "success"
+        'Result': {
+            'test': "success"
         }
     }
     return jsonify(ResultSet=result)
+
