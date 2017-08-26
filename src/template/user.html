@@ -16,12 +16,16 @@
     {% for project in context %}
     <tr>
         <td>{{project.creator}}</td>
-        <td>{{project.name}}</td>
+        <td>
+            <a href="{{url_for('render_project', project_id=project.id)}}" target="_blank">
+                {{project.name}}
+            </a>
+        </td>
         <td>{{project.fav}}
         <td>
-          <input type="button"
+            <input type="button"
                    class="favorite" value="favorite" data="{{project.id}}">
-        </td> 
+        </td>
     </tr>
     {% endfor %}
     </tbody>
@@ -33,9 +37,6 @@
 {% endif %}
 
 <script>
-    function redirectCreatePage() {
-        window.open('{{url_for("create_project")}}')
-    }
 
     $('.favorite').on('click', (e) => {
         const t = e.target;
