@@ -128,11 +128,19 @@ def save_project():
     }
     return jsonify(ResultSet=result)
 
-@app.route('/favorite')
+@app.route('/favorite', methods=['POST'])
 @login_required
-def favb():
-    fav +=request.json['fav'] 
-    
+def favorite():
+    id = request.json['id']
+    target_project = HyperLapse.query.filter(HyperLapse.id == id).all()[0]
+    target_project.fav = target_project.fav + 1
+    db.session.add(target_project)
+    db.session.commit()
+    json = {
+        'text': 'success'
+    }
+    return jsonify(ResulSet=json)
+
 @app.route('/project/<project_id>')
 @login_required
 def render_project(project_id):

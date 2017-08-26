@@ -2,8 +2,8 @@
 {% block body %}
 
 <form action="{{url_for('keyword')}}" method="get">
-  <input type="search" name="search" placeholder="keyword">
-  <input type="submit" name="submit" value="検索">
+      <input type="search" name="search" placeholder="keyword">
+      <input type="submit" name="submit" value="検索">
 </form>
 
 <h3>popular</h3>
@@ -22,7 +22,7 @@
     <tr>
         <td>
             <a href="{{url_for('user_detail', user_name=project.creator)}}">
-            {{ project.creator }}
+                {{ project.creator }}
             </a>
         </td>
         <td>
@@ -32,8 +32,8 @@
             {{ project.fav }}
         </td>
         <td>
-            <input type="button" 
-            name="favorite" value="favorite" onClick +={{ project.fav }}>
+            <input type="button"
+                   class="favorite" value="favorite" data="{{project.id}}">
         </td>
     </tr>
     {% endfor %}
@@ -65,13 +65,15 @@
             </a>
         </td>
         <td>
+            <a href="{{url_for('render_project', project_id=project.id)}}">
             {{ project.name }}
+            </a>
         </td>
         <td>
             {{ project.fav }}
         </td>
         <td>
-            <input type="button" value="favorite" onclick= +={{ project.fav}}>
+            <input class="favorite" type="button" value="favorite" data="{{project.id}}">
         </td>
     </tr>
     {% endfor %}
@@ -84,25 +86,27 @@
 
 
 <script>
-    function redirectCreatePage(){
+    function redirectCreatePage() {
         window.open('{{url_for("create_project")}}')
     }
 
-    $('#favorite').onClick() => {
-        const $form = $(this);
+    $('.favorite').on('click', (e) => {
+        const t = e.target;
+        const target = $(t).attr('data');
         const param = {
-            e2: parts[3],
-            name: $('#favorite').val()
+            id: target,
         }
         $.ajax({
             type: 'POST',
             url: '{{url_for("favorite")}}',
-            data:JSON.stringify(param),
+            data: JSON.stringify(param),
             dataType: 'json',
             contentType: 'application/json',
             success: (r) => {
-                debugger;
-                alert(r.ResultSet.Result.text);
+                alert(r.ResulSet.text);
+            }
+        })
+    });
 
 </script>
 {% endblock %}
