@@ -151,4 +151,3 @@ def render_project(project_id):
     else:
         return render_template('viewer.html', project=target_project)
 
-
