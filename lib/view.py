@@ -99,7 +99,7 @@ def keyword():
 @app.route('/project')
 @login_required
 def create_project():
-    default_project = HyperLapse.query.filter(HyperLapse.id == 4).all()[0]
+    default_project = HyperLapse.query.filter(HyperLapse.id == 1).all()[0]
     print(default_project)
     return render_template('viewer.html', project=default_project)
 
