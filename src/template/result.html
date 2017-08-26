@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h2>Result for searching</h2>
+
+{% if context %}
+<table>
+    <thead>
+    <tr>
+        <th>creator</th>
+        <th>title</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for project in context %}
+    <tr>
+        <td>{{project.creator}}</td>
+        <td>{{project.name}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h4>No project are available</h4>
+
+<a href="{{url_for('top')}}">topに戻る</a>
+{% endif %}
+{% endblock %}
