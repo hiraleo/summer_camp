@@ -1,9 +1,18 @@
 <!doctype html>
+<head>
+<meta charset="utf-8">
 <title>アプリの名前</title>
+<link rel="stylesheet" type="text/css" href="/src/css/stylesheet.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
 <!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">-->
 <body>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<div class=page>
+
+<div class="page">
   <h1>APP</h1>
   {% if session.id %}
   <a href="{{ url_for('logout') }}">logout</a>

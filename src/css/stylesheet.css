@@ -13,6 +13,10 @@ a {
   color: #125688;
 }
 
+.page h1 {
+    background-color: white;
+}
+
 .top-wrapper {
   padding: 180px 0 200px 0;
   width: 100%;
@@ -112,16 +116,17 @@ header {
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
-  display: none;
+  /*display: none;*/
+  margin: auto;
 }
 
 .modal {
   position: absolute;
   top: 20%;
   left: 34%;
-  background-color: #e6ecf0;
+  background-color: #fff;
   padding: 20px 0 40px;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 450px;
   height: auto;
   text-align: center;
@@ -150,13 +155,13 @@ header {
   margin-bottom: 20px;
   font-size: 12px;
   padding: 12px 12px;
-  border: 1px solid #d0d5d8;
+  border: 1px solid #5f5d60;
   border-radius: 5px;
 }
 
 #submit-btn {
   display: inline-block;
-  padding: 14px 140px;
+  padding: 14px 40px;
   background-color: #125688;
   border: none;
   border-radius: 3px;
