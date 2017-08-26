@@ -23,7 +23,7 @@ class HyperLapse (db.Model):
     viewpoint_latlng1 = db.Column(db.Float)
     viewpoint_latlng2 = db.Column(db.Float)
     creator = db.Column(db.ForeignKey('user.name', onupdate='CASCADE', ondelete='CASCADE'))
-    fav = db.Column(db.Integer)
+    fav = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime,  default=db.func.now())
 
     def __repr__(self):

@@ -85,4 +85,20 @@ def create_project():
 @login_required
 def save_project():
     json = request.json
-
+    print(json)
+    hyperlapse = HyperLapse(
+        name=json.name,
+        start_latlng1=json.startPoint1,
+        start_latlng2=json.startPoint2,
+        end_latlng1=json.endPoint1,
+        end_latlng2=json.endPoint2,
+        creator=session.name
+    )
+    db.session.add(hyperlapse)
+    db.session.commit()
+    result = {
+        'Result':{
+            'result': "success"
+        }
+    }
+    return jsonify(ResultSet=result)
