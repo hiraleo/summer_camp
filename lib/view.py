@@ -70,8 +70,8 @@ def logout():
     session.pop('name', None)
     return redirect(url_for('index'))
 
-@app.route('/user/<int:user_id>')
+@app.route('/user/<user_name>')
 @login_required
-def user_detail(user_id):
-    user_project = HyperLapse.query.filter(HyperLapse.creator == session['id'])
+def user_detail(user_name):
+    user_project = HyperLapse.query.filter(HyperLapse.creator == user_name)
     return render_template('user.html', context=user_project)

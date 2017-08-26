@@ -2,7 +2,7 @@
 {% block body %}
 
 <h3>popular</h3>
-{% if context.id %}
+{% if context %}
 <table>
     <thead>
     <tr>
@@ -13,8 +13,8 @@
     <tbody>
     {% for project in context %}
     <tr>
-        <td>project.creator</td>
-        <td>project.name</td>
+        <td>{{project.creator}}</td>
+        <td>{{project.name}}</td>
     </tr>
     {% endfor %}
     </tbody>

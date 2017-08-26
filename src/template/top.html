@@ -14,8 +14,8 @@
     {% for project in popular %}
     <tr>
         <td>
-            <a href="{{url_for('user_detail', user_id=project.creator)}}">
-            {{ project.creator.user.name }}
+            <a href="{{url_for('user_detail', user_name=project.creator)}}">
+            {{ project.creator }}
             </a>
         </td>
         <td>
@@ -45,8 +45,8 @@
     {% for project in latest %}
     <tr>
         <td>
-            <a href="{{url_for('user_detail', user_id=project.creator)}}">
-                {{ project.creator.user.name }}
+            <a href="{{url_for('user_detail', user_name=project.creator)}}">
+                {{ project.creator }}
             </a>
         </td>
         <td>
