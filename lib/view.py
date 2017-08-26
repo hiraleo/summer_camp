@@ -148,4 +148,3 @@ def render_project(project_id):
     print(target_project)
     return render_template('viewer.html', project=target_project)
 
-

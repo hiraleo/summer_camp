@@ -8,6 +8,8 @@
     <tr>
         <th>creator</th>
         <th>title</th>
+        <th>favorite</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -15,6 +17,11 @@
     <tr>
         <td>{{project.creator}}</td>
         <td>{{project.name}}</td>
+        <td>{{project.fav}}
+        <td>
+          <input type="button"
+                   class="favorite" value="favorite" data="{{project.id}}">
+        </td> 
     </tr>
     {% endfor %}
     </tbody>
@@ -24,5 +31,31 @@
 
 
 {% endif %}
+
+<script>
+    function redirectCreatePage() {
+        window.open('{{url_for("create_project")}}')
+    }
+
+    $('.favorite').on('click', (e) => {
+        const t = e.target;
+        const target = $(t).attr('data');
+        const param = {
+            id: target,
+        }
+        $.ajax({
+            type: 'POST',
+            url: '{{url_for("favorite")}}',
+            data: JSON.stringify(param),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: (r) => {
+                alert(r.ResulSet.text);
+            }
+        })
+    });
+
+</script>
+
 <a href="{{url_for('top')}}">topに戻る</a>
 {% endblock %}
