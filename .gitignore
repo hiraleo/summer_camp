@@ -1,0 +1,8 @@
+/node_modules/
+/.idea/
+/lib/__pycache__/
+/lib/summerCamp.db
+/flask_session/
+lib/summerCamp.db
+*.db
+*.pyc
