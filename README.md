@@ -1,6 +1,6 @@
 # SummerCamp
 
-![gif](/summer_camp/STRAPSE.gif)
+![readme](https://github.com/hiraleo/summer_camp)/images/STRAPSE.gif)
 
 ##1. install
 
