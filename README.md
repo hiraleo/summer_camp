@@ -1,4 +1,7 @@
 # SummerCamp
+
+![gif](/summer_camp/STRAPSE.gif)
+
 ##1. install
 
 ```
