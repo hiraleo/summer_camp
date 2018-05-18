@@ -1,6 +1,6 @@
 # SummerCamp
 
-![gif](/summer_camp/STRAPSE.gif)
+![gif](https://raw.github.com/wiki/summer_camp/images/STRAPSE.gif)
 
 ##1. install
 
